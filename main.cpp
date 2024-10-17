@@ -2,9 +2,12 @@
 int main(){
     size_t m = 0, n = 0;
     std::cin >> m >> n;
-    int ** t=ct(m,n);
-    
-    std::cout << m << " " << n ;
-    return 0;
+    try{
+        int ** t=ct(m,n);
+    } catch(const std::exception &e){
+        std::cerr << "FAIL!\n"
+        return 1;
+    }
+    out(t);
     clean(t,m,n);
 }
