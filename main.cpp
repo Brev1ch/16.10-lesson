@@ -2,6 +2,9 @@
 int main(){
     size_t m = 0, n = 0;
     std::cin >> m >> n;
+    if (std::cin.fail()){
+        std::cerr << "Input error!\n";
+    }
     try{
         int ** t=ct(m,n);
     } catch(const std::exception &e){
