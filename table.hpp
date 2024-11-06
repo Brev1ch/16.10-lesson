@@ -1,9 +1,26 @@
 #ifndef TABLE_HPP
 #define TABLE_HPP
 #include <iostream>
-int ** ct(size_t n, size_t m);
-void clean(int ** t, size_t m);
-int input(int ** t, size_t m, size_t n);
-void out(const int * const * t, size_t m , size_t n);
+int ** alloc(size_t n, size_t m);
+void clear(int ** t, size_t m);
+int input(std::istream & in, int ** t, size_t m, size_t n);
+void print(std::ostream & out, const int * const * t, size_t m , size_t n);
+class Matrix
+{
+  ~Matrix() {
+		::clear(t_, m__);
+	}
+	Matrix(size_t m, size_t n):
+	t_(::alloc(m, n)), m_(m), n_(n)
+	{}
+	void input(std::istream & out)
+	{
+		::input(out, t_, m_, n_);
+	}
+	int rows() const;
+	int columns() const;
+	int ** t_;
+	size_t m_, n_;  
+}
 #endif
 
