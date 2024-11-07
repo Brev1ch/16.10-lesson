@@ -33,6 +33,8 @@ int main(){
     std::cerr << "Invalid argument\n";
     return 1;
   }
+  Matrix mtx2(mtx);
   mtx.print(std::cout);
+  mtx2.print(std::cout);
   return 0;
 }

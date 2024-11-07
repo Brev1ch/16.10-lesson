@@ -11,12 +11,12 @@ int ** alloc(size_t m, size_t n){
   try
   {
     for (created<n;++created){
-      t[created]=new int[n];
+      t[created] = new int[n];
     }
   }
   catch(const std::bad_alloc & e)
   {
-    clean(t,created);
+    clear(t,created);
     throw;
   }
   return t; 
@@ -59,4 +59,29 @@ int Matrix::rows() const
 int Matrix::columns() const
 {
   return  n_;
+}
+
+int ** copy(const int * const * t, size_t m, size_t n )
+{
+  int ** newt = new int[m];
+  size_t created = 0;
+  try
+  {
+    for (created < n; ++created){
+      newt[created]=new int[n];
+    }
+  }
+  catch(const std::bad_alloc & e)
+  {
+    clear(newt, created);
+    throw;
+  }
+  for (size_t i = 0; i < m; ++i)
+  {
+    for (size_t j = 0; j < n; ++j)
+    {
+      newt[i][j]=t[i][j];
+    }
+  }
+  return newt;
 }
