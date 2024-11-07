@@ -4,7 +4,7 @@ int main(){
   std::cin >> m >> n;
   if (m < 1 || n < 1)
   {
-    std::cout << "Input error!\n"
+    std::cout << "Input error!\n";
   }
   if (std::cin.fail())
   {
